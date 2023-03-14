@@ -1,0 +1,22 @@
+.result {
+  border: solid 2px red;
+  display: flex;
+  background: #FBFBFB;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 2rem;
+}
+.result__icon {
+  width: 60px;
+  height: 60px;
+}
+.result__compteur {
+  margin: 0.8rem;
+}
+.result__compteur--count {
+  font-size: 20px;
+  font-weight: bold;
+}
+.result__compteur--denom {
+  font-size: 14px;
+}/*# sourceMappingURL=Results.css.map */

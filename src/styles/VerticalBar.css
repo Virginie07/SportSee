@@ -1,0 +1,36 @@
+.verticalBar {
+  background: black;
+  position: fixed;
+  height: 100%;
+  width: 6.5%;
+  display: flex;
+  flex-direction: column;
+}
+.verticalBar__iconList {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10rem;
+}
+.verticalBar__icon {
+  background: white;
+  height: 64px;
+  width: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 6px;
+  margin-top: 1.2rem;
+}
+.verticalBar__copy {
+  transform: rotate(180deg);
+  width: 20%;
+  margin-left: 2.5rem;
+  margin-top: 6rem;
+}
+.verticalBar__copy--para {
+  color: white;
+  writing-mode: vertical-lr;
+  font-size: 12px;
+}/*# sourceMappingURL=VerticalBar.css.map */

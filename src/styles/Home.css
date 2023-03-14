@@ -1,0 +1,25 @@
+.home {
+  position: relative;
+}
+.home__para {
+  border: solid 2px fuchsia;
+  position: fixed;
+  z-index: 1;
+  margin-top: 10%;
+  left: 15%;
+}
+.home__para--accueil {
+  font-size: 48px;
+  font-weight: bold;
+}
+.home__para--name {
+  color: #E60000;
+  font-size: 48px;
+  font-weight: bold;
+}
+.home__itemResults {
+  border: solid 2px blue;
+  position: fixed;
+  margin-top: 10%;
+  left: 70%;
+}/*# sourceMappingURL=Home.css.map */

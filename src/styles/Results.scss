@@ -1,0 +1,25 @@
+.result{
+    border: solid 2px red;
+    display: flex;
+    background: #FBFBFB;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+
+    &__icon{
+        width: 60px;
+        height: 60px;
+    }
+
+    &__compteur{
+        margin: 0.8rem;
+        &--count{
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        &--denom{
+            font-size: 14px;
+        }
+    }
+}
