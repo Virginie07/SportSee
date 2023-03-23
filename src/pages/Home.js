@@ -9,32 +9,22 @@ import carbsIcon from "../img/carbs-icon.png";
 import fatIcon from "../img/fat-icon.png";
 import protIcon from "../img/protein-icon.png";
 import "../styles/Home.css";
+const apiData = "http://localhost:3000/UserMainDataMock.json";
+// import apiData from '../UserMainDataMock.json';
+// const apiData = 'UserMainDataMock.json';
+// const obj = JSON.parse(apiDatas);
 
 const Home = () => {
-  const [sportUser, setSportUser] = useState(null);
-
-  // useEffect(() => {
-
-  //   fetch("/UserMainDataMock.json")
-  //   .then((response) => {return response.json()})
-  //   .then((data) => {setSportUser(data)})
-
-  // }, []);
+  const [sportUser, setSportUser] = useState([]);
 
   useEffect(() => {
-    axios
-      .get("/UserMainDataMock.json")
-      .then((res) => {
-        setSportUser(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
-  console.log(sportUser);
-
-  // const allParam = useParams();
-  // const paramId = allParam.id;
-  // const itemData = sportUser.find((element) => element.id === paramId);
+    async function getStoreData(){
+        const response=await axios.get(apiData);
+        console.log(response);
+        setSportUser(response.data[0]);
+    }
+    getStoreData();
+}, []);
 
   if (sportUser) {
     return (
@@ -93,3 +83,44 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+// useEffect(() => {
+
+  //   fetch("/UserMainDataMock.json")
+  //   .then((response) => {return response.json()})
+  //   .then((data) => {setSportUser(data)})
+
+  // }, []);
+
+
+  // useEffect(() => {
+  //   axios
+  //     .get("/UserMainDataMock.json")
+  //     .then((res) => {
+  //       setSportUser(res.data);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }, []);
+
+  // console.log(sportUser);
+
+  // const allParam = useParams();
+  // const paramId = allParam.id;
+  // const itemData = sportUser.find((element) => element.id === paramId);
+
+  // useEffect(() => {
+
+//     fetchUsers();
+
+//   },);
+
+//   const fetchUsers = async () => {
+//     const res = await fetch(`http://localhost:3004/UserMainDataMock.json`)
+//     const data= await res.json();
+//     console.log("data", data.data);
+//     setSportUser(data.data)
+//     console.log("users", sportUser);
+//   }
