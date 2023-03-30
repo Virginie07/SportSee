@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-// import { useParams } from "react-router-dom";
 import axios from "axios";
+import getUserData from "../services/ApiCall";
 import Header from "../components/Header";
 import VerticalBar from "../components/VerticalBar";
 import Results from "../components/Results";
@@ -10,21 +10,34 @@ import fatIcon from "../img/fat-icon.png";
 import protIcon from "../img/protein-icon.png";
 import "../styles/Home.css";
 const apiData = "http://localhost:3000/UserMainDataMock.json";
-// import apiData from '../UserMainDataMock.json';
-// const apiData = 'UserMainDataMock.json';
-// const obj = JSON.parse(apiDatas);
+
 
 const Home = () => {
-  const [sportUser, setSportUser] = useState([]);
+  const [sportUser, setSportUser] = useState({});
 
   useEffect(() => {
-    async function getStoreData(){
-        const response=await axios.get(apiData);
-        console.log(response);
-        setSportUser(response.data[0]);
+    const fetchData = async () =>{
+      const data = await getUserData();
+      // const response = await getUserData();
+      // const data = await response.data;
+      // console.log(response);
+      console.log(data);
+      setSportUser(data);
     }
-    getStoreData();
-}, []);
+    fetchData();
+
+  }, []);
+
+//   useEffect(() => {
+//     async function getStoreData(){
+//         const {data} = await axios.get(apiData);
+//         console.log('mon data', data);
+//         setSportUser(data);
+//     }
+//     getStoreData();
+// }, []);
+
+
 
   if (sportUser) {
     return (
@@ -33,10 +46,9 @@ const Home = () => {
 
         <div className="home__para">
           <p className="home__para--accueil">
-            Bonjour
+            Bonjour 
             <span className="home__para--name">
-              {/* {sportUser.userInfos.firstName} */}
-              {sportUser.id}
+              {sportUser?.userInfos?.firstName}
             </span>
           </p>
 
@@ -46,26 +58,22 @@ const Home = () => {
         <div className="home__itemResults">
           <Results
             icon={calIcon}
-            count={sportUser.id + "kCal"}
-            // count={sportUser.keyData.calorieCount + "kCal"}
+            count={sportUser?.keyData?.calorieCount + "kCal"}
             denom={"Calories"}
           />
           <Results
             icon={protIcon}
-            count={sportUser.id + "g"}
-            // count={sportUser.keyData.proteinCount + "g"}
+            count={sportUser?.keyData?.proteinCount + "g"}
             denom={"Protéines"}
           />
           <Results
             icon={carbsIcon}
-            count={sportUser.id + "g"}
-            // count={sportUser.keyData.carbohydrateCount + "g"}
+            count={sportUser?.keyData?.carbohydrateCount + "g"}
             denom={"Glucides"}
           />
           <Results
             icon={fatIcon}
-            count={sportUser.id + "g"}
-            // count={sportUser.keyData.lipidCount + "g"}
+            count={sportUser?.keyData?.lipidCount + "g"}
             denom={"Lipides"}
           />
         </div>
@@ -124,3 +132,12 @@ export default Home;
 //     setSportUser(data.data)
 //     console.log("users", sportUser);
 //   }
+
+//   useEffect(() => {
+//     async function getStoreData(){
+//         const response=await axios.get(apiData);
+//         console.log(response);
+//         setSportUser(response.data[0]);
+//     }
+//     getStoreData();
+// }, []);
