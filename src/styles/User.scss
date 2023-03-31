@@ -1,0 +1,30 @@
+.user{
+    position: relative;
+    &__para{
+        border: solid 2px fuchsia;
+        position: fixed;
+        z-index: 1;
+        margin-top: 10%;
+        left: 15%;
+
+        &--accueil{
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+        &--name{
+            color: #E60000;
+            font-size: 48px;
+            font-weight: bold;
+        }
+
+    }
+
+    &__itemResults{
+        border: solid 2px blue;
+        position: fixed;
+        margin-top: 10%;
+        left: 70%;
+    }
+    
+}

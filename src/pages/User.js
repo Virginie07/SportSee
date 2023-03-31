@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import getUserData from "../services/ApiCall";
 import Header from "../components/Header";
 import VerticalBar from "../components/VerticalBar";
@@ -7,11 +8,19 @@ import calIcon from "../img/cal-icon.png";
 import carbsIcon from "../img/carbs-icon.png";
 import fatIcon from "../img/fat-icon.png";
 import protIcon from "../img/protein-icon.png";
-import "../styles/Home.css";
+import "../styles/User.css";
 
 const User = () => {
 
-    const [sportUser, setSportUser] = useState({});
+    const [sportUser, setSportUser] = useState([]);
+
+  //   useEffect(() => {
+
+  //   fetch("/UserMainDataMock.json")
+  //   .then((response) => {return response.json()})
+  //   .then((data) => {setSportUser(data)})
+
+  // }, []);
 
     useEffect(() => {
       const fetchData = async () =>{
@@ -26,23 +35,30 @@ const User = () => {
   
     }, []);
 
-    if (sportUser) {
+    console.log(sportUser);
+
+    const allParam = useParams();
+    const paramId = allParam.id;
+    const itemData = sportUser.find((element) => element.id === paramId);
+    console.log(itemData);
+
+    if (itemData) {
     return (
-      <div className="home">
+      <div className="user">
         <Header />
 
-        <div className="home__para">
-          <p className="home__para--accueil">
+        <div className="user__para">
+          <p className="user__para--accueil">
             Bonjour 
-            <span className="home__para--name">
-              {sportUser?.userInfos?.firstName}
+            <span className="user__para--name">
+              {itemData?.userInfos?.firstName}
             </span>
           </p>
 
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
         </div>
 
-        <div className="home__itemResults">
+        <div className="user__itemResults">
           <Results
             icon={calIcon}
             count={sportUser?.keyData?.calorieCount + "kCal"}

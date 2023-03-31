@@ -1,0 +1,25 @@
+.user {
+  position: relative;
+}
+.user__para {
+  border: solid 2px fuchsia;
+  position: fixed;
+  z-index: 1;
+  margin-top: 10%;
+  left: 15%;
+}
+.user__para--accueil {
+  font-size: 48px;
+  font-weight: bold;
+}
+.user__para--name {
+  color: #E60000;
+  font-size: 48px;
+  font-weight: bold;
+}
+.user__itemResults {
+  border: solid 2px blue;
+  position: fixed;
+  margin-top: 10%;
+  left: 70%;
+}/*# sourceMappingURL=User.css.map */

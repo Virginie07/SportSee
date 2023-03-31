@@ -8,18 +8,6 @@
   margin-top: 10%;
   left: 15%;
 }
-.home__para--accueil {
-  font-size: 48px;
+.home__para--lienNav {
   font-weight: bold;
-}
-.home__para--name {
-  color: #E60000;
-  font-size: 48px;
-  font-weight: bold;
-}
-.home__itemResults {
-  border: solid 2px blue;
-  position: fixed;
-  margin-top: 10%;
-  left: 70%;
 }/*# sourceMappingURL=Home.css.map */

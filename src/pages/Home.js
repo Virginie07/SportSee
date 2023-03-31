@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { NavLink } from "react-router-dom";
 import getUserData from "../services/ApiCall";
 import Header from "../components/Header";
 import VerticalBar from "../components/VerticalBar";
-import Results from "../components/Results";
-import calIcon from "../img/cal-icon.png";
-import carbsIcon from "../img/carbs-icon.png";
-import fatIcon from "../img/fat-icon.png";
-import protIcon from "../img/protein-icon.png";
 import "../styles/Home.css";
-const apiData = "http://localhost:3000/UserMainDataMock.json";
+// const apiData = "http://localhost:3000/UserMainDataMock.json";
 
 
 const Home = () => {
@@ -45,37 +40,8 @@ const Home = () => {
         <Header />
 
         <div className="home__para">
-          <p className="home__para--accueil">
-            Bonjour 
-            <span className="home__para--name">
-              {sportUser?.userInfos?.firstName}
-            </span>
-          </p>
-
-          <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-        </div>
-
-        <div className="home__itemResults">
-          <Results
-            icon={calIcon}
-            count={sportUser?.keyData?.calorieCount + "kCal"}
-            denom={"Calories"}
-          />
-          <Results
-            icon={protIcon}
-            count={sportUser?.keyData?.proteinCount + "g"}
-            denom={"Protéines"}
-          />
-          <Results
-            icon={carbsIcon}
-            count={sportUser?.keyData?.carbohydrateCount + "g"}
-            denom={"Glucides"}
-          />
-          <Results
-            icon={fatIcon}
-            count={sportUser?.keyData?.lipidCount + "g"}
-            denom={"Lipides"}
-          />
+            <p>Bonjour, veuillez choisir l'utilisateur:</p>
+            <NavLink to={"/User/" + "{sportUser.id}"} className="home__para--lienNav">Utilisateur 12</NavLink>
         </div>
 
         <VerticalBar />
@@ -113,11 +79,6 @@ export default Home;
   //     .catch((err) => console.log(err));
   // }, []);
 
-  // console.log(sportUser);
-
-  // const allParam = useParams();
-  // const paramId = allParam.id;
-  // const itemData = sportUser.find((element) => element.id === paramId);
 
   // useEffect(() => {
 
