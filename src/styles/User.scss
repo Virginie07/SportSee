@@ -1,30 +1,72 @@
-.user{
-    position: relative;
-    &__para{
-        border: solid 2px fuchsia;
-        position: fixed;
-        z-index: 1;
-        margin-top: 10%;
-        left: 15%;
+.user {
+  position: relative;
+  &__para {
+    border: solid 2px fuchsia;
+    position: fixed;
+    // z-index: 1;
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-bottom: 2rem;
 
-        &--accueil{
-            font-size: 48px;
-            font-weight: bold;
-        }
-
-        &--name{
-            color: #E60000;
-            font-size: 48px;
-            font-weight: bold;
-        }
-
+    &--accueil {
+      font-size: 48px;
+      font-weight: bold;
     }
 
-    &__itemResults{
-        border: solid 2px blue;
-        position: fixed;
-        margin-top: 10%;
-        left: 70%;
+    &--name {
+      color: #e60000;
+      font-size: 48px;
+      font-weight: bold;
     }
-    
+  }
+
+  &__itemResults {
+    border: solid 2px blue;
+    position: fixed;
+    width: 20%;
+    margin-top: 10%;
+    margin-left: 70%;
+  }
+}
+
+.main_content {
+  width: 100%;
+  display: flex;
+  height: 100%;
+  overflow-y: hidden;
+
+  .aside {
+    width: 10%;
+  }
+
+  .user_content {
+    width: 90%;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+
+    .user_graph {
+      display: flex;
+      flex-direction: row;
+    }
+
+    .user_graph_left {
+      width: 85%;
+      display: flex;
+      flex-direction: column;
+
+      .user_graph_bottom_list{
+        display: flex;
+        flex-direction: row;
+      }
+
+      .user_graph_bottom_listItem{
+        margin: 0.5rem;
+      }
+    }
+
+    .user_graph_right {
+      width: 15%;
+    }
+  }
 }

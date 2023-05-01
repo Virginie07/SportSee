@@ -1,86 +1,119 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import getUserData from "../services/ApiCall";
+import { getUsersData } from "../services/ApiCall";
+import LogoSportSee from '../img/Logo.png';
 import Header from "../components/Header";
 import VerticalBar from "../components/VerticalBar";
 import "../styles/Home.css";
-// const apiData = "http://localhost:3000/UserMainDataMock.json";
-
 
 const Home = () => {
-  const [sportUser, setSportUser] = useState({});
+  const [allSportUsers, setAllSportUsers] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () =>{
-      const data = await getUserData();
+    const fetchData = async () => {
+      const data = await getUsersData();
       // const response = await getUserData();
       // const data = await response.data;
       // console.log(response);
-      console.log(data);
-      setSportUser(data);
-    }
+      console.log("data", data);
+      setAllSportUsers(data);
+    }; 
     fetchData();
-
   }, []);
 
-//   useEffect(() => {
-//     async function getStoreData(){
-//         const {data} = await axios.get(apiData);
-//         console.log('mon data', data);
-//         setSportUser(data);
-//     }
-//     getStoreData();
-// }, []);
+  //   useEffect(() => {
+  //     async function getStoreData(){
+  //         const {data} = await axios.get(apiData);
+  //         console.log('mon data', data);
+  //         setSportUser(data);
+  //     }
+  //     getStoreData();
+  // }, []);
+  // const UserCard = ({ id, firstName }) => {
+  //   <div className="home__para">
+  //     <p>Bonjour, veuillez choisir l'utilisateur:</p>
+  //     <NavLink to={`/User/${id}`} className="home__para--lienNav">
+  //       {firstName}
+  //     </NavLink>
+  //   </div>;
+  // };
 
-
-
-  if (sportUser) {
-    return (
+  return (
+    <>
       <div className="home">
-        <Header />
 
-        <div className="home__para">
-            <p>Bonjour, veuillez choisir l'utilisateur:</p>
-            <NavLink to={"/User/" + "{sportUser.id}"} className="home__para--lienNav">Utilisateur 12</NavLink>
+        <div className="home__contour">
+
+        <div className="home__logo">
+          <img className="home__logo--item" src={LogoSportSee} alt="logo" />
         </div>
 
-        <VerticalBar />
+        <div className="home__para">
+          {allSportUsers && allSportUsers.length > 0 ? (
+            allSportUsers.map((user) => (
+              <ul>
+                <li className="home__para--li">
+                  <NavLink to={`/User/${user.id}`} className="home__para--lienNav">
+                    Bonjour {user.userInfos.firstName}
+                  </NavLink>
+                </li>
+              </ul>
+            ))
+          ) : (
+            <p>Pas d'utilisateur pour le moment</p>
+          )}
+        </div>
+
+        </div>
+
       </div>
-    );
-  } else {
-    return (
-      <div>
-        <p>Error</p>
-      </div>
-    );
-  }
+    </>
+  );
+
+  // if (allSportUsers && allSportUsers.length > 0) {
+
+  //   return (
+
+  //     <div className="home">
+  //       <Header />
+
+  //       <div className="home__para">
+  //           <p>Bonjour, veuillez choisir l'utilisateur:</p>
+  //           <NavLink to={`/User/${allSportUsers[0].id}`} className="home__para--lienNav">Utilisateur 12</NavLink>
+  //       </div>
+
+  //       <VerticalBar />
+  //     </div>
+  //   );
+  // } else {
+  //   return (
+  //     <div>
+  //       <p>Error</p>
+  //     </div>
+  //   );
+  // }
 };
 
 export default Home;
 
-
-
-
 // useEffect(() => {
 
-  //   fetch("/UserMainDataMock.json")
-  //   .then((response) => {return response.json()})
-  //   .then((data) => {setSportUser(data)})
+//   fetch("/UserMainDataMock.json")
+//   .then((response) => {return response.json()})
+//   .then((data) => {setSportUser(data)})
 
-  // }, []);
+// }, []);
 
+// useEffect(() => {
+//   axios
+//     .get("/UserMainDataMock.json")
+//     .then((res) => {
+//       setSportUser(res.data);
+//     })
+//     .catch((err) => console.log(err));
+// }, []);
 
-  // useEffect(() => {
-  //   axios
-  //     .get("/UserMainDataMock.json")
-  //     .then((res) => {
-  //       setSportUser(res.data);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, []);
-
-
-  // useEffect(() => {
+// useEffect(() => {
 
 //     fetchUsers();
 

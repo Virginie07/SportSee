@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import getUserData from "../services/ApiCall";
+import { getUserData } from "../services/ApiCall";
 import Header from "../components/Header";
 import VerticalBar from "../components/VerticalBar";
 import Results from "../components/Results";
@@ -9,79 +9,130 @@ import carbsIcon from "../img/carbs-icon.png";
 import fatIcon from "../img/fat-icon.png";
 import protIcon from "../img/protein-icon.png";
 import "../styles/User.css";
+import SessionsChart from "../components/SessionsChart";
+import ActivityChart from "../components/ActivityChart";
+import PerformancesChart from "../components/PerformancesChart";
+import ScoreChart from "../components/ScoreChart";
 
 const User = () => {
+  const [user, setUser] = useState({});
 
-    const [sportUser, setSportUser] = useState([]);
+  const allParam = useParams();
+  const paramId = allParam.id;
 
-  //   useEffect(() => {
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUserData(paramId);
+      // const response = await getUserData();
+      // const data = await response.data;
+      // console.log(response);
+      console.log("ma data", data);
+      setUser(data);
+    };
+    fetchData();
+  }, [paramId]);
 
-  //   fetch("/UserMainDataMock.json")
-  //   .then((response) => {return response.json()})
-  //   .then((data) => {setSportUser(data)})
-
-  // }, []);
-
-    useEffect(() => {
-      const fetchData = async () =>{
-        const data = await getUserData();
-        // const response = await getUserData();
-        // const data = await response.data;
-        // console.log(response);
-        console.log(data);
-        setSportUser(data);
-      }
-      fetchData();
-  
-    }, []);
-
-    console.log(sportUser);
-
-    const allParam = useParams();
-    const paramId = allParam.id;
-    const itemData = sportUser.find((element) => element.id === paramId);
-    console.log(itemData);
-
-    if (itemData) {
+  if (user) {
     return (
       <div className="user">
         <Header />
+        <main className="main_content">
+          <aside className="aside">
+            <VerticalBar />
+          </aside>
+          <section className="user_content">
+            <div className="user_name">
+              <p className="user__para--accueil">
+                Bonjour
+                <span className="user__para--name">
+                  {user?.userInfos?.firstName}
+                </span>
+              </p>
+              <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
+            </div>
+            <div className="user_graph">
+              <div className="user_graph_left">
+                <div className="user_graph_left_activity">
+                  <ActivityChart />
+                </div>
+                <div className="user_graph_bottom_list">
+                  <div className="user_graph_bottom_session_chart user_graph_bottom_listItem">
+                    <SessionsChart />
+                  </div>
+                  <div className="user_graph_bottom_performance_chart user_graph_bottom_listItem">
+                    <PerformancesChart />
+                  </div>
+                  <div className="user_graph_bottom_score_chart user_graph_bottom_listItem">
+                    <ScoreChart />
+                  </div>
+                </div>
+              </div>
+              <div className="user_graph_right">
+                <Results
+                  icon={calIcon}
+                  count={user?.keyData?.calorieCount + "kCal"}
+                  denom={"Calories"}
+                />
+                <Results
+                  icon={protIcon}
+                  count={user?.keyData?.proteinCount + "g"}
+                  denom={"Protéines"}
+                />
+                <Results
+                  icon={carbsIcon}
+                  count={user?.keyData?.carbohydrateCount + "g"}
+                  denom={"Glucides"}
+                />
+                <Results
+                  icon={fatIcon}
+                  count={user?.keyData?.lipidCount + "g"}
+                  denom={"Lipides"}
+                />
+              </div>
+            </div>
+          </section>
+        </main>
 
-        <div className="user__para">
+        {/* <div className="user__para">
           <p className="user__para--accueil">
             Bonjour 
             <span className="user__para--name">
-              {itemData?.userInfos?.firstName}
+              {user?.userInfos?.firstName}
             </span>
           </p>
 
           <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
-        </div>
+        </div> */}
 
-        <div className="user__itemResults">
+        {/* <SessionsChart/>
+        <ActivityChart/>
+        <PerformancesChart/>
+        <ScoreChart/> */}
+
+        {/* <div className="user__itemResults">
           <Results
             icon={calIcon}
-            count={sportUser?.keyData?.calorieCount + "kCal"}
+            count={user?.keyData?.calorieCount + "kCal"}
             denom={"Calories"}
           />
           <Results
             icon={protIcon}
-            count={sportUser?.keyData?.proteinCount + "g"}
+            count={user?.keyData?.proteinCount + "g"}
             denom={"Protéines"}
           />
           <Results
             icon={carbsIcon}
-            count={sportUser?.keyData?.carbohydrateCount + "g"}
+            count={user?.keyData?.carbohydrateCount + "g"}
             denom={"Glucides"}
           />
           <Results
             icon={fatIcon}
-            count={sportUser?.keyData?.lipidCount + "g"}
+            count={user?.keyData?.lipidCount + "g"}
             denom={"Lipides"}
           />
-        </div>
+        </div> */}
 
-        <VerticalBar />
+        {/* <VerticalBar /> */}
       </div>
     );
   } else {

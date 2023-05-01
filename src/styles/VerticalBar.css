@@ -1,6 +1,7 @@
 .verticalBar {
   background: black;
   position: fixed;
+  z-index: 1;
   height: 100%;
   width: 6.5%;
   display: flex;

@@ -1,13 +1,27 @@
 .home {
-  position: relative;
+  background: #FF0101;
+  margin-top: 14%;
+  margin-left: 24%;
+  padding: 1rem;
+  width: 50%;
 }
-.home__para {
-  border: solid 2px fuchsia;
-  position: fixed;
-  z-index: 1;
-  margin-top: 10%;
-  left: 15%;
+.home__contour {
+  background: black;
+  display: flex;
+  justify-content: space-around;
+  padding: 2rem;
+}
+.home__logo--item {
+  height: 90px;
+  width: 90px;
+}
+.home__para--li {
+  list-style: none;
+  margin-bottom: 0.5rem;
+  padding: 1rem;
 }
 .home__para--lienNav {
   font-weight: bold;
+  text-decoration: none;
+  color: white;
 }/*# sourceMappingURL=Home.css.map */
