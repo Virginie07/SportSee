@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { getUsersData } from "../services/ApiCall";
 import LogoSportSee from '../img/Logo.png';
-import Header from "../components/Header";
-import VerticalBar from "../components/VerticalBar";
 import "../styles/Home.css";
+
+/**
+ * Return HomePage
+ * @returns { }
+ */
 
 const Home = () => {
   const [allSportUsers, setAllSportUsers] = useState([]);

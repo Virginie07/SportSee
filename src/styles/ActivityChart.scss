@@ -1,5 +1,41 @@
+.legend{
+   display: flex;
+   justify-content: space-between;
+   margin-bottom: 1rem;
+   
+   &__titre{
+      font-weight: bold;
+   }
+
+   &__list{
+      display: flex;
+      &--item{
+         font-weight: bold;
+         margin-left: 1.5rem;
+         margin-right: 1rem;
+      }
+      &--itemPoids{
+         color: black;
+      }
+      &--itemCal{
+         color: red;
+      }
+      &--itemitem{
+         color: #74798C;
+      }
+   }
+}
+
 .barchart{
+   &__graph{
     margin-top: 4rem;
+    padding-top: 1rem;
     background: #FBFBFB;
     border-radius: 10px;
+   }
+   &__title{
+    border: solid 2px red;
+    width: 50%;
+   }
+    
 }

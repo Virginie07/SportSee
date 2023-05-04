@@ -12,30 +12,30 @@ import {
 
 const ScoreChart = () => {
 
-  //     const dataTest = [
-  //   {
-  //     id: 1,
-  //     score: 100,
-  //   },
-  //   {
-  //     id: 2,
-  //     score: 50,
-  //   },
-  // ];
+      const dataTest = [
+    {
+      id: 1,
+      score: 75,
+    },
+    // {
+    //   id: 2,
+    //   score: 50,
+    // },
+  ];
 
-  const [user, setUser] = useState({});
+  // const [user, setUser] = useState({});
 
-  const allParam = useParams();
-  const paramId = allParam.id;
+  // const allParam = useParams();
+  // const paramId = allParam.id;
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const data = await getUserData(paramId);
-      console.log("ma data", data);
-      setUser(data);
-    };
-    fetchData();
-  }, [paramId]);
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const data = await getUserData(paramId);
+  //     console.log("ma data", data);
+  //     setUser(data);
+  //   };
+  //   fetchData();
+  // }, [paramId]);
 
   // user.forEach((element, index) => {
   //   console.log(element);
@@ -47,9 +47,9 @@ const ScoreChart = () => {
     return (
         <div className='scorechart'>
             <ResponsiveContainer width={300} height={300}>
-                <RadialBarChart data={user} cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10}>
+                <RadialBarChart data={dataTest} domain={[0, 10]} cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10}>
 
-                    <RadialBar dataKey="todayScore" minAngle={15} cornerRadius={50} label={{ position: 'insideStart', fill: 'red' }} barSize={10}/>
+                    <RadialBar dataKey="score" minAngle={15} cornerRadius={50} label={{ position: 'insideStart', fill: 'red' }} barSize={10}/>
                     
                 </RadialBarChart>               
             </ResponsiveContainer>

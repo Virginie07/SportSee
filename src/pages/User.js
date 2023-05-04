@@ -43,10 +43,7 @@ const User = () => {
           <section className="user_content">
             <div className="user_name">
               <p className="user__para--accueil">
-                Bonjour
-                <span className="user__para--name">
-                  {user?.userInfos?.firstName}
-                </span>
+                Bonjour <span className="user__para--name">{user?.userInfos?.firstName}</span>
               </p>
               <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
             </div>

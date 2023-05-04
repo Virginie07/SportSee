@@ -31,25 +31,26 @@ const SessionsChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUsersDataSessions(paramId);
-      console.log("data", data.sessions);
-      // data.sessions.forEach((element, index) => {
-      //   element.day = index + 1;
-      // });
-
       setUserSessions(data.sessions);
     };
     fetchData();
   }, [paramId]);
 
+  const renderLegend = () => {
+    return(
+      <div className="legendSession">
+        <p className="legendSession__titre">Durée moyenne des sessions</p>
+      </div>
+    )
+  }
 
   return (
     <div className="LineChart">
-
       <ResponsiveContainer width={300} height={300}>
         <LineChart data={userSessions}>
-          <XAxis dataKey="day"/>
-          <YAxis hide={true}/>
-          <Tooltip/>
+          <XAxis dataKey="day" axisLine={false} tickLine={false}/>
+          <YAxis hide={true} domain={[0, "dataMax + 100"]}/>
+          <Tooltip />
           <Line
             dataKey="sessionLength"
             type="natural"
@@ -63,7 +64,7 @@ const SessionsChart = () => {
             //   strokeOpacity: 0.5,
             // }}
           />
-          <Legend verticalAlign="top"/>
+          <Legend verticalAlign="top" content={renderLegend}/>
         </LineChart>
       </ResponsiveContainer>
     </div>

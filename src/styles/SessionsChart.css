@@ -1,3 +1,8 @@
+.legendSession__titre {
+  color: #FF8080;
+  font-weight: bold;
+}
+
 .LineChart {
   background-color: hsl(0, 100%, 50%);
   margin-top: 2rem;

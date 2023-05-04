@@ -1,5 +1,36 @@
-.barchart {
+.legend {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+.legend__titre {
+  font-weight: bold;
+}
+.legend__list {
+  display: flex;
+}
+.legend__list--item {
+  font-weight: bold;
+  margin-left: 1.5rem;
+  margin-right: 1rem;
+}
+.legend__list--itemPoids {
+  color: black;
+}
+.legend__list--itemCal {
+  color: red;
+}
+.legend__list--itemitem {
+  color: #74798C;
+}
+
+.barchart__graph {
   margin-top: 4rem;
+  padding-top: 1rem;
   background: #FBFBFB;
   border-radius: 10px;
+}
+.barchart__title {
+  border: solid 2px red;
+  width: 50%;
 }/*# sourceMappingURL=ActivityChart.css.map */

@@ -27,7 +27,6 @@ const ActivityChart = () => {
   //   { day: 10, poids: 20, "Calories brûlées": 5 },
   // ];
 
-  
   const [userActivity, setUserActivity] = useState([]);
 
   const allParam = useParams();
@@ -36,7 +35,6 @@ const ActivityChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUsersDataAct(paramId);
-      // console.log("data", data.sessions);
       data.sessions.forEach((element, index) => {
         element.day = index + 1;
       });
@@ -46,22 +44,38 @@ const ActivityChart = () => {
     fetchData();
   }, [paramId]);
 
+  const renderLegend = () => {
+    return(
+      <div className="legend">
+        <p className="legend__titre">Activité quotidienne</p>
+        <ul className="legend__list">
+          <li className="legend__list--item legend__list--itemPoids">
+            <span className="legend__list--itemitem">Poids (kg)</span>
+          </li>
+          <li className="legend__list--item legend__list--itemCal">
+            <span className="legend__list--itemitem">Calories brûlées (kcal)</span>
+          </li>
+        </ul>
+      </div>
+    )
+  }
+
+
   return (
-    <div>
-      <ResponsiveContainer className="barchart" width={900} height={300}>
+    <div className="barchart">
+      <ResponsiveContainer className="barchart__graph" width={900} height={300}>
         <BarChart data={userActivity}>
           <CartesianGrid strokeDasharray="4 4" vertical={false} />
           <XAxis dataKey="day" />
           <YAxis orientation="right" />
-          <Tooltip />
-          <Legend iconType="circle" verticalAlign="top" />
+          <Tooltip/>
+          <Legend iconType="circle" verticalAlign="top" content={renderLegend}/>
           <Bar
             dataKey="kilogram"
             barSize={10}
             fill="dark"
             radius={[5, 5, 0, 0]}
           />
-        
           <Bar
             dataKey="calories"
             barSize={10}
