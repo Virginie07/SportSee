@@ -23,6 +23,18 @@ const ScoreChart = () => {
     // },
   ];
 
+  // class myRecette{
+  //   constructor(pId, pName, pServings, pIngredients, pTime, pDescription, pAppliance, pUstensils){
+  //       this.aId = pId
+  //       this.aName = pName.toLowerCase()
+  //       this.aServings = pServings
+  //       this.aIngredient = pIngredients
+  //       this.aTime = pTime
+  //       this.aDescription = pDescription.toLowerCase()
+  //       this.aAppliance = pAppliance.toLowerCase()
+  //       this.aUstensils = pUstensils
+  //   }
+
   // const [user, setUser] = useState({});
 
   // const allParam = useParams();

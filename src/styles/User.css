@@ -1,61 +1,51 @@
 .user {
   position: relative;
+  overflow: hidden;
 }
-.user__para {
-  border: solid 2px fuchsia;
-  position: fixed;
-  margin-top: 10%;
-  margin-left: 15%;
-  margin-bottom: 2rem;
-}
-.user__para--accueil {
-  font-size: 48px;
-  font-weight: bold;
-}
-.user__para--name {
-  color: #e60000;
-  font-size: 48px;
-  font-weight: bold;
-}
-.user__itemResults {
-  border: solid 2px blue;
-  position: fixed;
-  width: 20%;
-  margin-top: 10%;
-  margin-left: 70%;
-}
-
-.main_content {
+.user__mainContent {
   width: 100%;
   display: flex;
   height: 100%;
-  overflow-y: hidden;
 }
-.main_content .aside {
+.user__mainContentAside {
   width: 10%;
 }
-.main_content .user_content {
-  width: 90%;
+.user__mainContentSection {
+  border: solid 2px green;
   padding: 50px;
   display: flex;
   flex-direction: column;
 }
-.main_content .user_content .user_graph {
+.user__mainContentSection--accueil {
+  border: solid 2px fuchsia;
+  margin-bottom: 2rem;
+}
+.user__mainContentSection--para {
+  font-size: 48px;
+  font-weight: bold;
+}
+.user__mainContentSection--name {
+  color: #e60000;
+  font-size: 48px;
+  font-weight: bold;
+}
+.user__mainContentSection--graph {
   display: flex;
   flex-direction: row;
 }
-.main_content .user_content .user_graph_left {
+.user__mainContentSection--graphLeft {
   width: 85%;
   display: flex;
   flex-direction: column;
 }
-.main_content .user_content .user_graph_left .user_graph_bottom_list {
+.user__mainContentSection--graphLeftBottomList {
   display: flex;
   flex-direction: row;
 }
-.main_content .user_content .user_graph_left .user_graph_bottom_listItem {
+.user__mainContentSection--graphLeftBottomListItem {
   margin: 0.5rem;
 }
-.main_content .user_content .user_graph_right {
+.user__mainContentSection--graphRight {
+  margin-top: 3.5rem;
   width: 15%;
 }/*# sourceMappingURL=User.css.map */

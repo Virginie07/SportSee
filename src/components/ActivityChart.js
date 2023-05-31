@@ -35,13 +35,21 @@ const ActivityChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUsersDataAct(paramId);
-      data.sessions.forEach((element, index) => {
-        element.day = index + 1;
+      // data.sessions.forEach((element, index) => {
+      //   element._index = index + 1;
+      // });
+
+      data.sessions.forEach((element) => {       
+        var elementDay = element.day;
+        var dayDate = new Date(elementDay);
+        var dayNumber = dayDate.getDate();
+        element._day = dayNumber;
       });
+      console.log("%c%s%c element:%o", "color: green;", "fonction: useEffectActivity", "", data);
 
       setUserActivity(data.sessions);
     };
-    fetchData();
+    fetchData().catch((e) => console.log(e));
   }, [paramId]);
 
   const renderLegend = () => {
@@ -66,7 +74,7 @@ const ActivityChart = () => {
       <ResponsiveContainer className="barchart__graph" width={900} height={300}>
         <BarChart data={userActivity}>
           <CartesianGrid strokeDasharray="4 4" vertical={false} />
-          <XAxis dataKey="day" />
+          <XAxis dataKey="_day" />
           <YAxis orientation="right" />
           <Tooltip/>
           <Legend iconType="circle" verticalAlign="top" content={renderLegend}/>

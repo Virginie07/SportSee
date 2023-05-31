@@ -13,16 +13,6 @@ import {
 import "../styles/SessionsChart.css";
 
 const SessionsChart = () => {
-  // const data = [
-  //   { day: "L", sessionLength: 30 },
-  //   { day: "M", sessionLength: 23 },
-  //   { day: "M", sessionLength: 45 },
-  //   { day: "J", sessionLength: 50 },
-  //   { day: "V", sessionLength: 0 },
-  //   { day: "S", sessionLength: 0 },
-  //   { day: "D", sessionLength: 60 },
-  // ];
-
   const [userSessions, setUserSessions] = useState([]);
 
   const allParam = useParams();
@@ -31,6 +21,21 @@ const SessionsChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUsersDataSessions(paramId);
+
+      const tabWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
+      // console.log(tabWeek[0]);
+
+      data.sessions.forEach((element) => {
+        var elementWeekDay = element.day;
+        var weekDay = tabWeek[elementWeekDay-1];
+        // console.log(elementWeekDay);
+        element._day = weekDay;
+        // console.log(weekDay);
+      });
+
+      console.log("%c%s%c element:%o", "color: red;", "fonction: useEffectSession", "", data);
+
+
       setUserSessions(data.sessions);
     };
     fetchData();
@@ -48,7 +53,7 @@ const SessionsChart = () => {
     <div className="LineChart">
       <ResponsiveContainer width={300} height={300}>
         <LineChart data={userSessions}>
-          <XAxis dataKey="day" axisLine={false} tickLine={false}/>
+          <XAxis dataKey="_day" axisLine={false} tickLine={false} />
           <YAxis hide={true} domain={[0, "dataMax + 100"]}/>
           <Tooltip />
           <Line

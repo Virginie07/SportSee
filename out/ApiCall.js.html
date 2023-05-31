@@ -1,4 +1,32 @@
-import axios from "axios";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ApiCall.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ApiCall.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import axios from "axios";
 // const apiData = "http://localhost:3001/UserMainDataMock.json";
 // const apiDataActivity = "http://localhost:3001/UserActivityMock.json";
 // const apiDataSessions = "http://localhost:3001/UserAverageSessionsMock.json";
@@ -6,40 +34,17 @@ import axios from "axios";
 // const apiTest = "http://localhost:3000/user/12/activity";
 
 
-var myInterface = {
-  mode:"dev",
-  getUrl:function () {
-   // window location recuperer la partie host et la partie port et retourner la partie host+port
-  if (this.mode=== 'dev') {
-    const port = window.location.port;
-    const origin = window.location.origin;
-    return 'http://localhost:3001';
-  }
-    
-  if (this.mode=== 'prod') {
-    const port = '3000';
-    const origin = 'http://localhost';
-    return `${origin}:${port}`;
-  }
-    
-  },
-  getEndpointActivity: function (userId) {
-    if (this.mode === 'dev'){
-      return `${myInterface.getUrl()}/UserActivityMock.json`
-    }
-    return `${myInterface.getUrl()}/${userId}/activity`
-  }
-}
+// const interface = {
+//   mode:"dev",
+//   getUrl:function () {
+//    // window location recuperer la partie host et la partie port et retourner la partie host+port
+//   },
+//   getEndpointActivity: function (userId) {
+//     return `${interface.getUrl()}/${userId}/activity`
+//   }
+// }
 
-console.log('interface %o', myInterface)
-console.log('interface %o', myInterface.mode)
-console.log('interface %o', myInterface.getUrl())
-console.log('windows %o', window.location)
-console.log('interface %o', myInterface.getEndpointActivity(12))
-myInterface.mode = 'prod';
-console.log('interface %o', myInterface.getEndpointActivity(12))
 
-// creation d'un user par mock, url dynamique meme en mode dev
 
 // je cree apres un mode "prod" qui lui prendra en compte l'api du backend
 // dans mes fonction au lieu d'appeler apiData j'appellerai interface.getEndPointActivity etc
@@ -57,16 +62,15 @@ var mode = '';
 export async function getUserData(id) {
   var myUrl = '';
   var dataResult = '';
-  // var url = myInterface.getEndpointUserData(id);
-  mode = 'dev';
-  // mode = 'prod';
+  // mode = 'dev';
+  mode = 'prod';
   
   if (mode === 'dev') {
     myUrl = 'http://localhost:3001/UserMainDataMock.json';
     const dataAxios = await (await axios.get(myUrl)).data;
     const axiosResult = dataAxios.find((user) => user.id.toString() === id.toString());
     dataResult = axiosResult;
-   console.log('test mock', dataResult);
+   
     
   }else if (mode === 'prod') {
     myUrl = 'http://localhost:3000/user/12';
@@ -75,9 +79,9 @@ export async function getUserData(id) {
     
   }else{
     return (
-      <div>
-        <p>ErrorAPI</p>
-      </div>
+      &lt;div>
+        &lt;p>ErrorAPI&lt;/p>
+      &lt;/div>
     )
   }
   return dataResult;
@@ -111,9 +115,9 @@ export async function getUsersDataAct(id) {
     console.log("%c%s%c element:%o", "color: yellow;", "fonction: getUsersDataAct", "", dataResult);
   }else{
     return (
-      <div>
-        <p>ErrorAPI</p>
-      </div>
+      &lt;div>
+        &lt;p>ErrorAPI&lt;/p>
+      &lt;/div>
     )
   }
   return dataResult;
@@ -146,9 +150,9 @@ export async function getUsersDataSessions(id) {
     
   }else{
     return (
-      <div>
-        <p>ErrorAPI</p>
-      </div>
+      &lt;div>
+        &lt;p>ErrorAPI&lt;/p>
+      &lt;/div>
     )
   }
   return dataResult;
@@ -182,9 +186,9 @@ export async function getUsersDataPerf(id) {
     
   }else{
     return (
-      <div>
-        <p>ErrorAPI</p>
-      </div>
+      &lt;div>
+        &lt;p>ErrorAPI&lt;/p>
+      &lt;/div>
     )
   }
   return dataResult;
@@ -221,4 +225,26 @@ export async function getUsersDataPerf(id) {
 // //     (user) => user.userId.toString() === id.toString()
 // //   );
 // //   return data;
-// }
+// }</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#getUserData">getUserData</a></li><li><a href="global.html#getUsersDataAct">getUsersDataAct</a></li><li><a href="global.html#getUsersDataPerf">getUsersDataPerf</a></li><li><a href="global.html#getUsersDataSessions">getUsersDataSessions</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Wed May 24 2023 19:58:51 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

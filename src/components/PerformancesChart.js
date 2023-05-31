@@ -12,7 +12,51 @@ import "../styles/PerformancesChart.css";
 
 const PerformancesChart = () => {
 
-    // const data = [
+    const [userPerf, setUserPerf] = useState([]);
+
+    const allParam = useParams();
+    const paramId = allParam.id;
+    
+    useEffect(() => {
+      const fetchData = async () => {
+        const data = await getUsersDataPerf(paramId);
+        // console.log(data.kind);
+        // console.log(data.kind[1]);
+        // var newKind = data.kind[data.data.kind];
+        // _kind = newKind;
+        
+
+        data.data.forEach((element) => {
+          var elementKind = element.kind;
+          var newKind = data.kind[elementKind];
+          // console.log(newKind);
+          element._kind = newKind;
+          // console.log(weekDay);
+        });
+  
+  
+        setUserPerf(data.data);
+      };
+      fetchData();
+    }, [paramId]);
+
+    return (
+        <div className='performanceschart'>
+            <ResponsiveContainer width={350} height={300}>
+                <RadarChart data={userPerf} className='radarChart'>
+                    <PolarGrid radialLines={false}/>
+                    <PolarAngleAxis dataKey="_kind" stroke='#FFFFFF'/>
+                    <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6}/>
+                </RadarChart>
+            </ResponsiveContainer>
+            
+        </div>
+    );
+};
+
+export default PerformancesChart;
+
+// const data = [
     //     {
     //         "kind": "cardio",
     //         "value": 80,
@@ -38,36 +82,3 @@ const PerformancesChart = () => {
     //         "value": 90,
     //       }
     //   ];
-    const [userPerf, setUserPerf] = useState([]);
-
-    const allParam = useParams();
-    const paramId = allParam.id;
-  
-    useEffect(() => {
-      const fetchData = async () => {
-        const data = await getUsersDataPerf(paramId);
-        // console.log("data", data.sessions);
-        // data.sessions.forEach((element, index) => {
-        //   element.day = index + 1;
-        // });
-  
-        setUserPerf(data.data);
-      };
-      fetchData();
-    }, [paramId]);
-
-    return (
-        <div className='performanceschart'>
-            <ResponsiveContainer width={300} height={300}>
-                <RadarChart data={userPerf}>
-                    <PolarGrid radialLines={false}/>
-                    <PolarAngleAxis dataKey="kind" stroke='#FFFFFF'/>
-                    <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6}/>
-                </RadarChart>
-            </ResponsiveContainer>
-            
-        </div>
-    );
-};
-
-export default PerformancesChart;
