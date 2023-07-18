@@ -1,6 +1,21 @@
-.scorechart{
-    background: #FBFBFB;
-    margin-top: 2rem;
-    padding: 0.5rem;
-    border-radius: 10px;
+.scorechart {
+  // border: solid 2px blue;
+  background: #fbfbfb;
+  border-radius: 10px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__titre{
+    font-size: 22px;
+  }
+
+  &__titreSuite {
+    font-size: 20px;
+    font-weight: bold;
+    color: #74798C;
+  }
 }

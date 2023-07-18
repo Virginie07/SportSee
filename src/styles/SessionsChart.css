@@ -1,11 +1,18 @@
 .legendSession__titre {
-  color: #FF8080;
-  font-weight: bold;
+  color: #ff8080;
+  margin-top: 2rem;
+  margin-left: 3rem;
+  width: 10rem;
+  line-height: 1.5rem;
+}
+
+.tool__titre {
+  background: white;
+  padding: 0.5rem;
+  font-size: 14px;
 }
 
 .LineChart {
   background-color: hsl(0, 100%, 50%);
-  margin-top: 2rem;
-  padding: 0.5rem;
   border-radius: 10px;
 }/*# sourceMappingURL=SessionsChart.css.map */

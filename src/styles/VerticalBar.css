@@ -1,9 +1,8 @@
 .verticalBar {
   background: black;
-  position: fixed;
   z-index: 1;
   height: 100%;
-  width: 6.5%;
+  width: 65%;
   display: flex;
   flex-direction: column;
 }
@@ -34,4 +33,25 @@
   color: white;
   writing-mode: vertical-lr;
   font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .verticalBar {
+    width: 90%;
+  }
+  .verticalBar__iconList {
+    margin-top: 8rem;
+  }
+  .verticalBar__icon {
+    height: 50px;
+    width: 50px;
+    margin-top: 1.8rem;
+  }
+  .verticalBar__copy {
+    margin-top: 4rem;
+    margin-right: 2.5rem;
+  }
+  .verticalBar__copy--para {
+    font-size: 13px;
+  }
 }/*# sourceMappingURL=VerticalBar.css.map */

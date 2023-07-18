@@ -1,84 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import {
-    RadarChart,
-    ResponsiveContainer,
-    PolarGrid,
-    PolarAngleAxis,
-    Radar,
-  } from "recharts";
+  RadarChart,
+  ResponsiveContainer,
+  PolarGrid,
+  PolarAngleAxis,
+  Radar,
+} from "recharts";
 import { getUsersDataPerf } from "../services/ApiCall";
 import "../styles/PerformancesChart.css";
 
 const PerformancesChart = () => {
+  const [userPerf, setUserPerf] = useState([]);
 
-    const [userPerf, setUserPerf] = useState([]);
+  const allParam = useParams();
+  const paramId = allParam.id;
 
-    const allParam = useParams();
-    const paramId = allParam.id;
-    
-    useEffect(() => {
-      const fetchData = async () => {
-        const data = await getUsersDataPerf(paramId);
-        // console.log(data.kind);
-        // console.log(data.kind[1]);
-        // var newKind = data.kind[data.data.kind];
-        // _kind = newKind;
-        
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUsersDataPerf(paramId);
+      setUserPerf(window.monUtilisateur.performances);
+    };
+    fetchData();
+  }, [paramId]);
 
-        data.data.forEach((element) => {
-          var elementKind = element.kind;
-          var newKind = data.kind[elementKind];
-          // console.log(newKind);
-          element._kind = newKind;
-          // console.log(weekDay);
-        });
-  
-  
-        setUserPerf(data.data);
-      };
-      fetchData();
-    }, [paramId]);
+  const renderKind = (e) => {
+    return e.getKind();
+  };
 
-    return (
-        <div className='performanceschart'>
-            <ResponsiveContainer width={350} height={300}>
-                <RadarChart data={userPerf} className='radarChart'>
-                    <PolarGrid radialLines={false}/>
-                    <PolarAngleAxis dataKey="_kind" stroke='#FFFFFF'/>
-                    <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6}/>
-                </RadarChart>
-            </ResponsiveContainer>
-            
-        </div>
-    );
+  return (
+    <div className="performanceschart">
+      <ResponsiveContainer className="performanceschart__container" width="100%" height={300}>
+        <RadarChart data={userPerf} outerRadius={80} className="radarChart">
+          <PolarGrid radialLines={false} />
+          <PolarAngleAxis dataKey={renderKind} stroke="#FFFFFF"/>
+          <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />
+        </RadarChart>
+      </ResponsiveContainer>
+    </div>
+  );
 };
 
 export default PerformancesChart;
-
-// const data = [
-    //     {
-    //         "kind": "cardio",
-    //         "value": 80,
-    //       },
-    //       {
-    //         "kind": "energy",
-    //         "value": 120,
-    //       },
-    //       {
-    //         "kind": "endurance",
-    //         "value": 140,
-    //       },
-    //       {
-    //         "kind": "strength",
-    //         "value": 50,
-    //       },
-    //       {
-    //         "kind": "speed",
-    //         "value": 200,
-    //       },
-    //       {
-    //         "kind": "intensity",
-    //         "value": 90,
-    //       }
-    //   ];

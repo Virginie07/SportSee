@@ -1,6 +1,5 @@
 .user {
   position: relative;
-  overflow: hidden;
 }
 .user__mainContent {
   width: 100%;
@@ -11,13 +10,12 @@
   width: 10%;
 }
 .user__mainContentSection {
-  border: solid 2px green;
-  padding: 50px;
+  padding-top: 50px;
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .user__mainContentSection--accueil {
-  border: solid 2px fuchsia;
   margin-bottom: 2rem;
 }
 .user__mainContentSection--para {
@@ -29,23 +27,67 @@
   font-size: 48px;
   font-weight: bold;
 }
+.user__mainContentSection--paraTxt {
+  margin-top: 1.5rem;
+}
 .user__mainContentSection--graph {
   display: flex;
   flex-direction: row;
 }
 .user__mainContentSection--graphLeft {
-  width: 85%;
+  width: 80%;
   display: flex;
   flex-direction: column;
+  margin-top: 1rem;
 }
 .user__mainContentSection--graphLeftBottomList {
   display: flex;
   flex-direction: row;
+  width: 97%;
 }
 .user__mainContentSection--graphLeftBottomListItem {
+  width: 33%;
   margin: 0.5rem;
 }
 .user__mainContentSection--graphRight {
-  margin-top: 3.5rem;
+  margin-top: 1rem;
+  margin-left: 1.5rem;
   width: 15%;
+}
+
+@media (max-width: 1024px) {
+  .user__mainContentSection {
+    padding: 30px;
+    width: 100%;
+  }
+  .user__mainContentSection--accueil {
+    margin-bottom: 1rem;
+  }
+  .user__mainContentSection--para {
+    font-size: 36px;
+  }
+  .user__mainContentSection--paraTxt {
+    font-size: 20px;
+  }
+  .user__mainContentSection--name {
+    font-size: 36px;
+  }
+  .user__mainContentSection--graph {
+    flex-direction: column-reverse;
+  }
+  .user__mainContentSection--graphLeft {
+    width: 100%;
+  }
+  .user__mainContentSection--graphLeftBottomList {
+    margin-top: 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .user__mainContentSection--graphLeftBottomListItem {
+    width: 50%;
+  }
+  .user__mainContentSection--graphRight {
+    display: flex;
+    margin-top: 2.5rem;
+  }
 }/*# sourceMappingURL=User.css.map */

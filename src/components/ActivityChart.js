@@ -14,19 +14,6 @@ import {
 import "../styles/ActivityChart.css";
 
 const ActivityChart = () => {
-  // const userActivity = [
-  //   { day: 1, poids: 40, "Calories brûlées": 20 },
-  //   { day: 2, poids: 50, "Calories brûlées": 40 },
-  //   { day: 3, poids: 90, "Calories brûlées": 60 },
-  //   { day: 4, poids: 70, "Calories brûlées": 10 },
-  //   { day: 5, poids: 30, "Calories brûlées": 25 },
-  //   { day: 6, poids: 40, "Calories brûlées": 15 },
-  //   { day: 7, poids: 20, "Calories brûlées": 5 },
-  //   { day: 8, poids: 20, "Calories brûlées": 5 },
-  //   { day: 9, poids: 20, "Calories brûlées": 5 },
-  //   { day: 10, poids: 20, "Calories brûlées": 5 },
-  // ];
-
   const [userActivity, setUserActivity] = useState([]);
 
   const allParam = useParams();
@@ -35,25 +22,13 @@ const ActivityChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUsersDataAct(paramId);
-      // data.sessions.forEach((element, index) => {
-      //   element._index = index + 1;
-      // });
-
-      data.sessions.forEach((element) => {       
-        var elementDay = element.day;
-        var dayDate = new Date(elementDay);
-        var dayNumber = dayDate.getDate();
-        element._day = dayNumber;
-      });
-      console.log("%c%s%c element:%o", "color: green;", "fonction: useEffectActivity", "", data);
-
-      setUserActivity(data.sessions);
+      setUserActivity(window.monUtilisateur.activities);
     };
     fetchData().catch((e) => console.log(e));
   }, [paramId]);
 
   const renderLegend = () => {
-    return(
+    return (
       <div className="legend">
         <p className="legend__titre">Activité quotidienne</p>
         <ul className="legend__list">
@@ -61,23 +36,46 @@ const ActivityChart = () => {
             <span className="legend__list--itemitem">Poids (kg)</span>
           </li>
           <li className="legend__list--item legend__list--itemCal">
-            <span className="legend__list--itemitem">Calories brûlées (kcal)</span>
+            <span className="legend__list--itemitem">
+              Calories brûlées (kcal)
+            </span>
           </li>
         </ul>
       </div>
-    )
-  }
+    );
+  };
 
+  const renderActTooltip = (...args) => {
+    const maValeur = args[0];
+    console.log('valeur');
+    if (maValeur.active === true) {
+      return (
+        <div className="tool">
+          <p className="tool__titre">
+            texte essai
+          </p>
+        </div>
+      );
+    }
+  };
+
+  const renderDay = (e) => {
+    return e.getDay();
+  };
 
   return (
     <div className="barchart">
-      <ResponsiveContainer className="barchart__graph" width={900} height={300}>
+      <ResponsiveContainer className="barchart__graph" width="95%" height={300}>
         <BarChart data={userActivity}>
           <CartesianGrid strokeDasharray="4 4" vertical={false} />
-          <XAxis dataKey="_day" />
+          <XAxis dataKey={renderDay} />
           <YAxis orientation="right" />
-          <Tooltip/>
-          <Legend iconType="circle" verticalAlign="top" content={renderLegend}/>
+          <Tooltip content={renderActTooltip}/>
+          <Legend
+            iconType="circle"
+            verticalAlign="top"
+            content={renderLegend}
+          />
           <Bar
             dataKey="kilogram"
             barSize={10}

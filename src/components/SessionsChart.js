@@ -21,55 +21,64 @@ const SessionsChart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const data = await getUsersDataSessions(paramId);
-
-      const tabWeek = ['L', 'M', 'M', 'J', 'V', 'S', 'D'];
-      // console.log(tabWeek[0]);
-
-      data.sessions.forEach((element) => {
-        var elementWeekDay = element.day;
-        var weekDay = tabWeek[elementWeekDay-1];
-        // console.log(elementWeekDay);
-        element._day = weekDay;
-        // console.log(weekDay);
-      });
-
-      console.log("%c%s%c element:%o", "color: red;", "fonction: useEffectSession", "", data);
-
-
-      setUserSessions(data.sessions);
+      setUserSessions(window.monUtilisateur.sessions);
     };
     fetchData();
   }, [paramId]);
 
   const renderLegend = () => {
-    return(
+    return (
       <div className="legendSession">
-        <p className="legendSession__titre">Durée moyenne des sessions</p>
+        <p className="legendSession__titre">
+          Durée moyenne des <br /> sessions
+        </p>
       </div>
-    )
-  }
+    );
+  };
+
+  const renderTooltip = (...args) => {
+    const maValeur = args[0];
+    if (maValeur.active == true) {
+      return (
+        <div className="tool">
+          <p className="tool__titre">
+            {maValeur.payload[0].payload.sessionLength} min
+          </p>
+        </div>
+      );
+    }
+  };
+
+  const renderWeek = (e) => {
+    return e.getWeek();
+  };
 
   return (
     <div className="LineChart">
-      <ResponsiveContainer width={300} height={300}>
+      <ResponsiveContainer
+        className="LineChart__container"
+        width="100%"
+        height={300}
+      >
         <LineChart data={userSessions}>
-          <XAxis dataKey="_day" axisLine={false} tickLine={false} />
-          <YAxis hide={true} domain={[0, "dataMax + 100"]}/>
-          <Tooltip />
+          <XAxis
+            dataKey={renderWeek}
+            axisLine={false}
+            tickLine={false}
+            tick={{ fill: "#FFFFFF" }}
+            tickMargin={-10}
+            padding={{ left: 20, right: 20, top: 10 }}
+          />
+          <YAxis hide={true} domain={["dataMin - 100", "dataMax + 100"]} />
+          <Tooltip content={renderTooltip} />
           <Line
             dataKey="sessionLength"
             type="natural"
             stroke="#FFFFFF"
-            strokeWidth={4}
+            strokeWidth={2}
             dot={false}
-            // activeDot={{
-            //   fill: "#FFFFFF",
-            //   r: 4,
-            //   strokeWidth: 8,
-            //   strokeOpacity: 0.5,
-            // }}
           />
-          <Legend verticalAlign="top" content={renderLegend}/>
+          <Legend verticalAlign="top" content={renderLegend} />
         </LineChart>
       </ResponsiveContainer>
     </div>

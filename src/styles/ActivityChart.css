@@ -21,16 +21,10 @@
   color: red;
 }
 .legend__list--itemitem {
-  color: #74798C;
+  color: #74798c;
 }
 
 .barchart__graph {
-  margin-top: 4rem;
-  padding-top: 1rem;
-  background: #FBFBFB;
+  background: #fbfbfb;
   border-radius: 10px;
-}
-.barchart__title {
-  border: solid 2px red;
-  width: 50%;
 }/*# sourceMappingURL=ActivityChart.css.map */

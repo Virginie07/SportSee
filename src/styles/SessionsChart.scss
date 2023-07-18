@@ -1,13 +1,23 @@
-.legendSession{
-    &__titre{
-        color: #FF8080;
-        font-weight: bold;
-    }
+.legendSession {
+  &__titre {
+    color: #ff8080;
+    margin-top: 2rem;
+    margin-left: 3rem;
+    width: 10rem;
+    line-height: 1.5rem;
+  }
 }
 
-.LineChart{
-    background-color: hsl(0, 100%, 50%);
-    margin-top: 2rem;
+.tool {
+  &__titre {
+    background: white;
     padding: 0.5rem;
-    border-radius: 10px;
+    font-size: 14px;
+  }
+}
+
+.LineChart {
+  // border: solid 2px blue;
+  background-color: hsl(0, 100%, 50%);
+  border-radius: 10px;
 }

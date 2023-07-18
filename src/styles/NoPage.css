@@ -1,0 +1,27 @@
+.error {
+  color: #ff0101;
+  width: 100%;
+  margin-top: 5rem;
+}
+.error__txt {
+  display: flex;
+  justify-content: center;
+  font-size: 36px;
+  width: 100%;
+}
+
+.linkError__button {
+  margin-top: 2rem;
+  margin-left: 40%;
+  background: #ff0101;
+  border: solid 2px black;
+  cursor: pointer;
+}
+.linkError__txtAccueil {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}/*# sourceMappingURL=NoPage.css.map */

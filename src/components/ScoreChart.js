@@ -1,73 +1,61 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getUserData } from "../services/ApiCall";
+import { getUsersDataScore } from "../services/ApiCall";
 import {
-    ResponsiveContainer,
-    RadialBarChart,
-    RadialBar,
-    Legend,
-    Tooltip,
-  } from "recharts";
-  import "../styles/ScoreChart.css";
+  ResponsiveContainer,
+  RadialBarChart,
+  RadialBar,
+  Legend,
+} from "recharts";
+import "../styles/ScoreChart.css";
 
 const ScoreChart = () => {
+  const [userRadial, setUserRadial] = useState();
 
-      const dataTest = [
-    {
-      id: 1,
-      score: 75,
-    },
-    // {
-    //   id: 2,
-    //   score: 50,
-    // },
-  ];
+  const allParam = useParams();
+  const paramId = allParam.id;
 
-  // class myRecette{
-  //   constructor(pId, pName, pServings, pIngredients, pTime, pDescription, pAppliance, pUstensils){
-  //       this.aId = pId
-  //       this.aName = pName.toLowerCase()
-  //       this.aServings = pServings
-  //       this.aIngredient = pIngredients
-  //       this.aTime = pTime
-  //       this.aDescription = pDescription.toLowerCase()
-  //       this.aAppliance = pAppliance.toLowerCase()
-  //       this.aUstensils = pUstensils
-  //   }
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await getUsersDataScore(paramId);
+      setUserRadial(window.monUtilisateur.scoreRadialData);
+    };
+    fetchData();
+  }, [paramId]);
 
-  // const [user, setUser] = useState({});
+  var score = window.monUtilisateur.scoreRadialData[1]?.score;
 
-  // const allParam = useParams();
-  // const paramId = allParam.id;
-
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const data = await getUserData(paramId);
-  //     console.log("ma data", data);
-  //     setUser(data);
-  //   };
-  //   fetchData();
-  // }, [paramId]);
-
-  // user.forEach((element, index) => {
-  //   console.log(element);
-  //   if (element.id === 2) {
-  //     element.todayScore = 0.12;
-  //   }
-  // });
-
+  if (score >= 0) {
     return (
-        <div className='scorechart'>
-            <ResponsiveContainer width={300} height={300}>
-                <RadialBarChart data={dataTest} domain={[0, 10]} cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" barSize={10}>
-
-                    <RadialBar dataKey="score" minAngle={15} cornerRadius={50} label={{ position: 'insideStart', fill: 'red' }} barSize={10}/>
-                    
-                </RadialBarChart>               
-            </ResponsiveContainer>
-            
-        </div>
+      <div className="scorechart">
+        <ResponsiveContainer className="scorechart__container" width="100%" height={300}>
+          <RadialBarChart
+            data={userRadial}
+            cx="50%"
+            cy="50%"
+            startAngle={180}
+            endAngle={-360}
+            barSize={10}
+            innerRadius={50}
+          >
+            <RadialBar dataKey="score" minAngle={30} cornerRadius={10} />
+            <Legend
+              content={() => (
+                <div className="legend">
+                  <p className="legend__titre">{score}%</p>
+                  <p className="legend__titreSuite">de votre objectif</p>
+                </div>
+              )}
+              layout="vertical"
+              verticalAlign="middle"
+            />
+          </RadialBarChart>
+        </ResponsiveContainer>
+      </div>
     );
+  } else {
+    return <div className="scorechart"></div>;
+  }
 };
 
 export default ScoreChart;

@@ -1,44 +1,72 @@
-.verticalBar{
-    // border: solid 2px fuchsia;
-    background: black;   
-    position:fixed;
-    z-index: 1;
-    height: 100%;
-    width: 6.5%;
-    display: flex; 
+.verticalBar {
+  // border: solid 2px fuchsia;
+  background: black;
+  z-index: 1;
+  height: 100%;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+
+  &__iconList {
+    // border: solid 2px green;
+    height: 40%;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    margin-top: 10rem;
+  }
 
-    &__iconList{
-        // border: solid 2px green;
-        height: 40%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 10rem;
-    }
+  &__icon {
+    background: white;
+    height: 64px;
+    width: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    margin-top: 1.2rem;
+  }
 
-    &__icon{
-        background: white;
-        height: 64px;
-        width: 64px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 6px;
-        margin-top: 1.2rem;
-    }
+  &__copy {
+    // border: solid 2px cornflowerblue;
+    transform: rotate(180deg);
+    width: 20%;
+    margin-left: 2.5rem;
+    margin-top: 6rem;
 
-    &__copy{
-        // border: solid 2px cornflowerblue;
-        transform: rotate(180deg);
-        width: 20%;
-        margin-left: 2.5rem;
-        margin-top: 6rem;
-        
-        &--para{
-            color: white;
-            writing-mode: vertical-lr;
-            font-size: 12px;
-        }
+    &--para {
+      color: white;
+      writing-mode: vertical-lr;
+      font-size: 12px;
     }
+  }
+}
+
+
+@media (max-width: 1024px) {
+  .verticalBar {
+    // border: solid 2px fuchsia;
+    width: 90%;
+  
+    &__iconList {
+      // border: solid 2px green;
+      margin-top: 8rem;
+    }
+  
+    &__icon {
+      height: 50px;
+      width: 50px;
+      margin-top: 1.8rem;
+    }
+  
+    &__copy {
+      // border: solid 2px cornflowerblue;
+      margin-top: 4rem;
+      margin-right: 2.5rem;
+  
+      &--para {
+        font-size: 13px;
+      }
+    }
+  }
 }

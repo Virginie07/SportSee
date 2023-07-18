@@ -1,7 +1,6 @@
 .result {
-  border: solid 2px red;
   display: flex;
-  background: #FBFBFB;
+  background: #fbfbfb;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 2rem;
