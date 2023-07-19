@@ -46,13 +46,15 @@ const ActivityChart = () => {
   };
 
   const renderActTooltip = (...args) => {
-    const maValeur = args[0];
-    console.log('valeur');
-    if (maValeur.active === true) {
+    const maValeurAct = args[0];
+    if (maValeurAct.active == true) {
       return (
-        <div className="tool">
-          <p className="tool__titre">
-            texte essai
+        <div className="toolAct">
+          <p className="toolAct__titre">
+            {maValeurAct.payload[0].payload.kilogram}kg
+          </p>
+          <p className="toolAct__titre">
+            {maValeurAct.payload[0].payload.calories}Kcal
           </p>
         </div>
       );

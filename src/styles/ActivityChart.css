@@ -24,6 +24,16 @@
   color: #74798c;
 }
 
+.toolAct {
+  background: #E60000;
+  padding: 0.5rem;
+}
+.toolAct__titre {
+  color: #FFFFFF;
+  font-size: 14px;
+  margin: 1.5rem 0rem 1.5rem 0rem;
+}
+
 .barchart__graph {
   background: #fbfbfb;
   border-radius: 10px;

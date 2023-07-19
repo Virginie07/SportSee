@@ -26,8 +26,18 @@
   }
 }
 
-.barchart {
+.toolAct{
+  background: #E60000;
+  padding: 0.5rem;
 
+  &__titre{
+    color: #FFFFFF;
+    font-size: 14px;
+    margin: 1.5rem 0rem 1.5rem 0rem;
+  }
+}
+
+.barchart {
   &__graph {
     background: #fbfbfb;
     border-radius: 10px;
