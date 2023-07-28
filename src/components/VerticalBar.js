@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/VerticalBar.css";
+import "../styles/VerticalBar.scss";
 import IconMedit from "../img/iconMedit.png";
 import IconNat from "../img/iconNat.png";
 import IconBike from "../img/iconBike.png";

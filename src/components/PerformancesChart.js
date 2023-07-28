@@ -8,7 +8,7 @@ import {
   Radar,
 } from "recharts";
 import { getUsersDataPerf } from "../services/ApiCall";
-import "../styles/PerformancesChart.css";
+import "../styles/PerformancesChart.scss";
 
 const PerformancesChart = () => {
   const [userPerf, setUserPerf] = useState([]);

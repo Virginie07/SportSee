@@ -1,0 +1,26 @@
+.error {
+  color: #ff0101;
+  width: 100%;
+  margin-top: 5rem;
+}
+.error__txt {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #c4c4c4;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.linkError__button {
+  margin-top: 2rem;
+  margin-left: 40%;
+  padding: 2rem;
+  background: #c4c4c4;
+  color: white;
+  border: solid 2px black;
+  cursor: pointer;
+}
+.linkError__txtAccueil {
+  list-style: none;
+}/*# sourceMappingURL=error.css.map */

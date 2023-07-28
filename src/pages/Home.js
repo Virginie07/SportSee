@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoSportSee from "../img/Logo.png";
-import "../styles/Home.css";
+import "../styles/Home.scss";
 
 const Home = () => {
   return (

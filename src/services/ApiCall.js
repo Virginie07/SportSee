@@ -217,8 +217,19 @@ var myInterface = {
   },
 };
 
-myInterface.mode = "dev";
-// myInterface.mode = 'prod';
+// myInterface.mode = "dev";
+myInterface.mode = "prod";
+
+function casErreur(error) {
+  if (error.response) {
+    console.log("erreur reponse", error.response.data);
+  } else if (error.request) {
+    console.log("erreur requete", error.request);
+  } else {
+    console.log("message erreur", error.message);
+  }
+  window.location.replace("/Error");
+}
 
 /**
  * Export users data with id
@@ -230,7 +241,9 @@ export async function getUserData(id) {
   var dataResult = "";
   var url = myInterface.getEndpointDatas(id);
 
-  const axiosResult = await (await axios.get(url)).data;
+  const axiosResult = await (
+    await axios.get(url).catch((error) => casErreur(error))
+  ).data;
   dataResult = axiosResult.data;
 
   return dataResult;
@@ -246,7 +259,9 @@ export async function getUsersDataScore(id) {
   var dataResult = "";
   var url = myInterface.getEndpointScore(id);
 
-  const axiosResult = await (await axios.get(url)).data;
+  const axiosResult = await (
+    await axios.get(url).catch((error) => casErreur(error))
+  ).data;
   dataResult = axiosResult.data;
   window.monUtilisateur.populateScore(dataResult);
 
@@ -264,9 +279,10 @@ export async function getUsersDataAct(id) {
   var dataResult = "";
   var url = myInterface.getEndpointActivity(id);
 
-  const axiosResult = await (await axios.get(url)).data;
+  const axiosResult = await (
+    await axios.get(url).catch((error) => casErreur(error))
+  ).data;
   dataResult = axiosResult.data;
-
   window.monUtilisateur.populateActivities(dataResult.sessions);
 
   return dataResult;
@@ -282,10 +298,12 @@ export async function getUsersDataSessions(id) {
   var dataResult = "";
   var url = myInterface.getEndpointSessions(id);
 
-  const axiosResult = await (await axios.get(url)).data;
+  const axiosResult = await (
+    await axios.get(url).catch((error) => casErreur(error))
+  ).data;
   dataResult = axiosResult.data;
-
   window.monUtilisateur.populateSessions(dataResult.sessions);
+
   return dataResult;
 }
 
@@ -299,10 +317,12 @@ export async function getUsersDataPerf(id) {
   var dataResult = "";
   var url = myInterface.getEndpointPerf(id);
 
-  const axiosResult = await (await axios.get(url)).data;
+  const axiosResult = await (
+    await axios.get(url).catch((error) => casErreur(error))
+  ).data;
   dataResult = axiosResult.data;
-
   window.monUtilisateur.populatePerformances(dataResult.data);
+  
   return dataResult;
 }
 
@@ -313,3 +333,42 @@ window.test.getUsersDataScore = getUsersDataScore;
 window.test.getUsersDataAct = getUsersDataAct;
 window.test.getUsersDataSessions = getUsersDataSessions;
 window.test.getUsersDataPerf = getUsersDataPerf;
+
+// function (error) {
+//   if (error.response) {
+//     // la requête a été faite et le code de réponse du serveur n’est pas dans
+//     // la plage 2xx
+//     console.log(
+//       "1er log, erreur reponse, contient la data",
+//       error.response.data
+//     );
+//     console.log(
+//       "2eme log, erreur reponse,contient le statut",
+//       error.response.status
+//     );
+//     console.log("3eme log, erreur reponse, ???", error.response.headers);
+
+//     console.log("test redirection", redirect);
+//     //  window.location = '/Error';
+//     // window.location.assign('/Error');
+//     window.location.replace("/Error");
+//   } else if (error.request) {
+//     // la requête a été faite mais aucune réponse n’a été reçue
+//     // `error.request` est une instance de XMLHttpRequest dans le navigateur
+//     // et une instance de http.ClientRequest avec node.js
+//     console.log("4eme log, erreur requete", error.request);
+
+//     // window.location = 'http://localhost:3001/Error';
+//     // window.location.assign('/Error');
+//     window.location.replace("/Error");
+//   } else {
+//     // quelque chose s’est passé lors de la construction de la requête et cela
+//     // a provoqué une erreur
+//     console.log("Error", error.message);
+
+//     // window.location = 'http://localhost:3001/Error';
+//     // window.location.assign('/Error');
+//     window.location.replace("/Error");
+//   }
+//   console.log(error.config);
+// })

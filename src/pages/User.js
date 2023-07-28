@@ -8,7 +8,7 @@ import calIcon from "../img/cal-icon.png";
 import carbsIcon from "../img/carbs-icon.png";
 import fatIcon from "../img/fat-icon.png";
 import protIcon from "../img/protein-icon.png";
-import "../styles/User.css";
+import "../styles/User.scss";
 import SessionsChart from "../components/SessionsChart";
 import ActivityChart from "../components/ActivityChart";
 import PerformancesChart from "../components/PerformancesChart";

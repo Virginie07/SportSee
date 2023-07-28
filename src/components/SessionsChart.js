@@ -10,7 +10,7 @@ import {
   YAxis,
   Legend,
 } from "recharts";
-import "../styles/SessionsChart.css";
+import "../styles/SessionsChart.scss";
 
 const SessionsChart = () => {
   const [userSessions, setUserSessions] = useState([]);

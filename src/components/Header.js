@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/index.css";
-import "../styles/Header.css";
+import "../styles/index.scss";
+import "../styles/Header.scss";
 import LogoSportSee from "../img/Logo.png";
 
 const Header = () => {

@@ -1,23 +1,23 @@
-.error {
+.noPage {
   color: #ff0101;
   width: 100%;
   margin-top: 5rem;
 }
-.error__txt {
+.noPage__txt {
   display: flex;
   justify-content: center;
   font-size: 36px;
   width: 100%;
 }
 
-.linkError__button {
+.linkNoPage__button {
   margin-top: 2rem;
   margin-left: 40%;
   background: #ff0101;
   border: solid 2px black;
   cursor: pointer;
 }
-.linkError__txtAccueil {
+.linkNoPage__txtAccueil {
   display: flex;
   justify-content: center;
   margin: 2rem;

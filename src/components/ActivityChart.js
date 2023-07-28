@@ -11,7 +11,7 @@ import {
   Legend,
   Bar,
 } from "recharts";
-import "../styles/ActivityChart.css";
+import "../styles/ActivityChart.scss";
 
 const ActivityChart = () => {
   const [userActivity, setUserActivity] = useState([]);

@@ -7,7 +7,7 @@ import {
   RadialBar,
   Legend,
 } from "recharts";
-import "../styles/ScoreChart.css";
+import "../styles/ScoreChart.scss";
 
 const ScoreChart = () => {
   const [userRadial, setUserRadial] = useState();

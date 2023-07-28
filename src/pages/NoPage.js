@@ -1,19 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/NoPage.css"
+import "../styles/NoPage.scss"
 
 const NoPage = () => {
   return (
     <div>
-      <div className="error">
-        <p className="error__txt">
+      <div className="noPage">
+        <p className="noPage__txt">
           Oups! La page que vous demandez n'existe pas.
         </p>
       </div>
 
-      <NavLink to="/" className="linkError">
-        <button className="linkError__button">
-          <li className="linkError__txtAccueil">
+      <NavLink to="/" className="linkNoPage">
+        <button className="linkNoPage__button">
+          <li className="linkNoPage__txtAccueil">
             Retourner sur la page d'accueil
           </li>
         </button>
