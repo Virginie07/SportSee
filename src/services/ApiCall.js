@@ -18,6 +18,7 @@ class performance {
   }
 }
 
+// Données pour le graphique ActivityChart
 class activity {
   constructor(day, kilogram, calories) {
     this.day = day;
@@ -32,6 +33,7 @@ class activity {
   }
 }
 
+// Données pour le graphique SessionChart
 class session {
   constructor(day, sessionLength) {
     this.day = day;
@@ -45,6 +47,7 @@ class session {
   }
 }
 
+// Données pour le graphique ScoreChart
 function multipleScore(data) {
   var newScore = 0;
   if (data.todayScore) {
@@ -57,12 +60,11 @@ function multipleScore(data) {
 
 class utilisateur {
   constructor() {
-    console.log("Création d'un utilisateur");
     this.performances = []; // contiendra des objets de la class performance
-    this.activities = [];
-    this.sessions = [];
-    this.score = null;
-    this.scoreRadialData = [];
+    this.activities = []; // contiendra des objets de la class activity
+    this.sessions = []; // contiendra des objets de la class session
+    this.score = null; // contiendra des objets de la class score
+    this.scoreRadialData = []; 
   }
 
   populateScore(data) {
@@ -164,20 +166,10 @@ var myInterface = {
   getUrl: function () {
     if (this.mode === "dev") {
       return "http://localhost:3001";
-      // const port = window.location.port;
-      // const origin = window.location.origin;
-      // return `${origin}:${port}`;
     }
 
     if (this.mode === "prod") {
-      // const port = window.location.port;
-      // const origin = window.location.origin;
-      // return `${origin}:${port}`;
       return "http://localhost:3000";
-
-      // const port = '3000';
-      // const origin = 'http://localhost';
-      // return `${origin}:${port}`;
     }
   },
 
@@ -271,11 +263,10 @@ export async function getUsersDataScore(id) {
 /**
  * Export activity datas with id
  * @param { Number } id
- * @returns { Array }
+ * @returns { Object }
  */
 
 export async function getUsersDataAct(id) {
-  console.log("getUsersDataAct(id)");
   var dataResult = "";
   var url = myInterface.getEndpointActivity(id);
 
@@ -291,7 +282,7 @@ export async function getUsersDataAct(id) {
 /**
  * Export sessions datas with id
  * @param { Number } id
- * @returns { Array }
+ * @returns { Object }
  */
 
 export async function getUsersDataSessions(id) {
@@ -322,7 +313,7 @@ export async function getUsersDataPerf(id) {
   ).data;
   dataResult = axiosResult.data;
   window.monUtilisateur.populatePerformances(dataResult.data);
-  
+
   return dataResult;
 }
 
@@ -333,42 +324,3 @@ window.test.getUsersDataScore = getUsersDataScore;
 window.test.getUsersDataAct = getUsersDataAct;
 window.test.getUsersDataSessions = getUsersDataSessions;
 window.test.getUsersDataPerf = getUsersDataPerf;
-
-// function (error) {
-//   if (error.response) {
-//     // la requête a été faite et le code de réponse du serveur n’est pas dans
-//     // la plage 2xx
-//     console.log(
-//       "1er log, erreur reponse, contient la data",
-//       error.response.data
-//     );
-//     console.log(
-//       "2eme log, erreur reponse,contient le statut",
-//       error.response.status
-//     );
-//     console.log("3eme log, erreur reponse, ???", error.response.headers);
-
-//     console.log("test redirection", redirect);
-//     //  window.location = '/Error';
-//     // window.location.assign('/Error');
-//     window.location.replace("/Error");
-//   } else if (error.request) {
-//     // la requête a été faite mais aucune réponse n’a été reçue
-//     // `error.request` est une instance de XMLHttpRequest dans le navigateur
-//     // et une instance de http.ClientRequest avec node.js
-//     console.log("4eme log, erreur requete", error.request);
-
-//     // window.location = 'http://localhost:3001/Error';
-//     // window.location.assign('/Error');
-//     window.location.replace("/Error");
-//   } else {
-//     // quelque chose s’est passé lors de la construction de la requête et cela
-//     // a provoqué une erreur
-//     console.log("Error", error.message);
-
-//     // window.location = 'http://localhost:3001/Error';
-//     // window.location.assign('/Error');
-//     window.location.replace("/Error");
-//   }
-//   console.log(error.config);
-// })

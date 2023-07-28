@@ -1,10 +1,10 @@
-import React from 'react';
+import React from "react";
 import { NavLink } from "react-router-dom";
-import '../styles/error.scss';
+import "../styles/error.scss";
 
 const Error = () => {
-    return (
-        <div>
+  return (
+    <div>
       <div className="error">
         <p className="error__txt">
           Une erreur est survenue dans la récupération des données.
@@ -19,7 +19,7 @@ const Error = () => {
         </button>
       </NavLink>
     </div>
-    );
+  );
 };
 
 export default Error;

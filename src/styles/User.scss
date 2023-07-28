@@ -1,50 +1,50 @@
-.user{
+.user {
   // border: solid 6px fuchsia;
   position: relative;
 
-  &__mainContent{
+  &__mainContent {
     width: 100%;
     display: flex;
-    height: 100%;   
+    height: 100%;
   }
 
-  &__mainContentAside{
+  &__mainContentAside {
     width: 10%;
   }
 
-  &__mainContentSection{
+  &__mainContentSection {
     // border: solid 2px green;
     padding-top: 50px;
     display: flex;
     flex-direction: column;
     width: 100%;
 
-    &--accueil{
+    &--accueil {
       // border: solid 2px fuchsia;
       margin-bottom: 2rem;
     }
 
-    &--para{
+    &--para {
       font-size: 48px;
       font-weight: bold;
     }
 
-    &--name{
+    &--name {
       color: #e60000;
       font-size: 48px;
       font-weight: bold;
     }
 
-    &--paraTxt{
+    &--paraTxt {
       margin-top: 1.5rem;
     }
 
-    &--graph{
+    &--graph {
       display: flex;
       flex-direction: row;
     }
 
-    &--graphLeft{
+    &--graphLeft {
       // border: solid 2px blue;
       width: 80%;
       display: flex;
@@ -52,75 +52,72 @@
       margin-top: 1rem;
     }
 
-    &--graphLeftBottomList{
+    &--graphLeftBottomList {
       // border: solid 2px cadetblue;
       display: flex;
       flex-direction: row;
       width: 97%;
     }
 
-    &--graphLeftBottomListItem{
+    &--graphLeftBottomListItem {
       // border: solid 2px greenyellow;
       width: 33%;
       margin: 0.5rem;
     }
 
-    &--graphRight{
+    &--graphRight {
       // border: solid 2px pink;
       margin-top: 1rem;
       margin-left: 1.5rem;
       width: 15%;
     }
   }
-
 }
 
-
 @media (max-width: 1024px) {
-  .user{  
-    &__mainContentSection{
+  .user {
+    &__mainContentSection {
       padding: 30px;
       width: 100%;
-  
-      &--accueil{
+
+      &--accueil {
         margin-bottom: 1rem;
       }
-  
-      &--para{
+
+      &--para {
         font-size: 36px;
       }
 
-      &--paraTxt{
+      &--paraTxt {
         font-size: 20px;
       }
-  
-      &--name{
+
+      &--name {
         font-size: 36px;
       }
 
-      &--graph{
+      &--graph {
         flex-direction: column-reverse;
       }
-  
-      &--graphLeft{
+
+      &--graphLeft {
         width: 100%;
       }
 
-      &--graphLeftBottomList{
+      &--graphLeftBottomList {
         margin-top: 1rem;
         flex-direction: column;
         align-items: center;
       }
 
-      &--graphLeftBottomListItem{
+      &--graphLeftBottomListItem {
         width: 50%;
       }
 
-      &--graphRight{
+      &--graphRight {
         display: flex;
         margin-top: 2.5rem;
       }
     }
-  
   }
 }

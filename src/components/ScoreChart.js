@@ -28,7 +28,11 @@ const ScoreChart = () => {
   if (score >= 0) {
     return (
       <div className="scorechart">
-        <ResponsiveContainer className="scorechart__container" width="100%" height={300}>
+        <ResponsiveContainer
+          className="scorechart__container"
+          width="100%"
+          height={300}
+        >
           <RadialBarChart
             data={userRadial}
             cx="50%"

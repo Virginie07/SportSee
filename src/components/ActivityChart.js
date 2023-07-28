@@ -72,7 +72,7 @@ const ActivityChart = () => {
           <CartesianGrid strokeDasharray="4 4" vertical={false} />
           <XAxis dataKey={renderDay} />
           <YAxis orientation="right" />
-          <Tooltip content={renderActTooltip}/>
+          <Tooltip content={renderActTooltip} />
           <Legend
             iconType="circle"
             verticalAlign="top"

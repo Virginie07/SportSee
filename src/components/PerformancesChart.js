@@ -30,10 +30,14 @@ const PerformancesChart = () => {
 
   return (
     <div className="performanceschart">
-      <ResponsiveContainer className="performanceschart__container" width="100%" height={300}>
+      <ResponsiveContainer
+        className="performanceschart__container"
+        width="100%"
+        height={300}
+      >
         <RadarChart data={userPerf} outerRadius={80} className="radarChart">
           <PolarGrid radialLines={false} />
-          <PolarAngleAxis dataKey={renderKind} stroke="#FFFFFF"/>
+          <PolarAngleAxis dataKey={renderKind} stroke="#FFFFFF" />
           <Radar dataKey="value" fill="#FF0101" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
